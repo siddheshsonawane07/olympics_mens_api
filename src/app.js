@@ -47,7 +47,9 @@ app.patch("/mens/:id",async(req,res)=>{
         const _id = req.params.id;
         const updateMen = await MensRanking.findByIdAndUpdate(_id,req.body,{
             new:true
-        });
+        }),
+        const updateindatabase = await updateMen.save();
+
         res.send(updateMen);
         // const updateMen = await MensRanking.findByIdAndUpdate({_id:_id},{
         //     $set: req.body
@@ -55,7 +57,7 @@ app.patch("/mens/:id",async(req,res)=>{
         // res.send(updateMen);
     }
     catch(e){
-        res.send(400).send(e);
+        res.status(400).send(e);
     }
 });
 
