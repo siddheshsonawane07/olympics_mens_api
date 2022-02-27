@@ -40,6 +40,25 @@ app.get("/mens/:id",async(req,res)=>{
     }
 });
 
+//update request
+app.patch("/mens/:id",async(req,res)=>{
+    try{
+        console.log(req.body);
+        const _id = req.params.id;
+        const updateMen = await MensRanking.findByIdAndUpdate(_id,req.body,{
+            new:true
+        });
+        res.send(updateMen);
+        // const updateMen = await MensRanking.findByIdAndUpdate({_id:_id},{
+        //     $set: req.body
+        // });
+        // res.send(updateMen);
+    }
+    catch(e){
+        res.send(400).send(e);
+    }
+});
+
 app.listen(port, ()=>{
     console.log(`connection is live at port number ${port}`);
 });

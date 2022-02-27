@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const express = require('express');
-
 const menSchema = new mongoose.Schema({
     ranking:{
         type: Number,
