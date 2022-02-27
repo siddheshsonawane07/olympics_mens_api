@@ -20,7 +20,7 @@ app.post("/mens",async(req,res)=>{
 //read request
 app.get("/mens",async(req,res)=>{
     try{
-        const getMens = await MensRanking.find({})
+        const getMens = await MensRanking.find({}).sort({"ranking":1})
         res.send(getMens);
     }
     catch(e){
