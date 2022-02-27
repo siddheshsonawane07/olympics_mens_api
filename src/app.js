@@ -18,16 +18,27 @@ app.post("/mens",async(req,res)=>{
 })
 
 //read request
-app.post("/mens",async(req,res)=>{
+app.get("/mens",async(req,res)=>{
     try{
-        const addingMensRecords = new MensRanking(req.body);
-        const insertMens = await addingMensRecords.save();
-        res.status(201).send(insertMens);
+        const getMens = await MensRanking.find({})
+        res.send(getMens);
     }
     catch(e){
         res.send(400).send(e);
     }
-})
+});
+
+//read request using id
+app.get("/mens/:id",async(req,res)=>{
+    try{
+        const _id = req.params.id;
+        const getMen = await MensRanking.findById(_id);
+        res.send(getMen);
+    }
+    catch(e){
+        res.send(400).send(e);
+    }
+});
 
 app.listen(port, ()=>{
     console.log(`connection is live at port number ${port}`);
