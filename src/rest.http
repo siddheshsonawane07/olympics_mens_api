@@ -1,0 +1,5 @@
+###Read Request 
+GET http://localhost:3000/mens
+
+### Post Request
+DELETE   http://localhost:3000/mens/
